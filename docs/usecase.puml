@@ -1,0 +1,20 @@
+@startuml
+left to right direction
+
+actor "Пользователь" as User
+actor "Администратор" as Admin
+
+rectangle "Система" {
+    usecase "Авторизоваться" as UC1
+    usecase "Просмотреть данные" as UC2
+    usecase "Редактировать профиль" as UC3
+    usecase "Управлять пользователями" as UC4
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+
+Admin --> UC1
+Admin --> UC4
+@enduml
