@@ -5,16 +5,29 @@ actor "Пользователь" as User
 actor "Администратор" as Admin
 
 rectangle "Система" {
-    usecase "Авторизоваться" as UC1
-    usecase "Просмотреть данные" as UC2
-    usecase "Редактировать профиль" as UC3
-    usecase "Управлять пользователями" as UC4
+    usecase "войти" as UC1
+    usecase "просмотреть свободные номера" as UC2
+    usecase "зарегстрироваться" as UC3
+    usecase "войти" as UC4
+    usecase "создание заявки на бронирование" as UC5
+    usecase "отменить бронирование" as UC6
+    usecase "добавление нового администратора" as UC7
+    usecase "оформление заселения клиента" as UC8
+    usecase "добавление и удаление номеров" as UC9
+    usecase "просмотр всех бронирований" as UC10
+    usecase "оформление выезда клиента" as UC11
 }
 
 User --> UC1
 User --> UC2
 User --> UC3
+UC1 --> UC5
+UC1 --> UC6
 
-Admin --> UC1
 Admin --> UC4
+UC4 --> UC11
+UC4 --> UC10
+UC4 --> UC9
+UC4 --> UC8
+UC4 --> UC7
 @enduml
