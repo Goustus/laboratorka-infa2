@@ -3,8 +3,7 @@ db=sqlite3.connect('hotel.db')
 c=db.cursor()
 c.execute("PRAGMA foreign_keys = ON;")
 
-c.execute("""
-CREATE TABLE Room (
+c.execute("""CREATE TABLE Room (
     room_id integer primary key autoincrement,
     number text not null,
     type text not null,
@@ -19,8 +18,7 @@ c.execute("""CREATE TABLE Client (
     phone text not null
 )""")
 
-c.execute("""
-CREATE TABLE Booking (
+c.execute("""CREATE TABLE Booking (
     booking_id integer primary key autoincrement,
     client_id integer not null,
     room_id integer not null,
