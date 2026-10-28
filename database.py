@@ -3,6 +3,19 @@ db=sqlite3.connect('hotel.db')
 c=db.cursor()
 c.execute("PRAGMA foreign_keys = ON;")
 
+c.execute("""CREATE TABLE Role (
+    role_id integer primary key autoincrement,
+    role_name text not null
+)""")
+
+c.execute("""CREATE TABLE User (
+    user_id integer primary key autoincrement,
+    role_id integer not null,
+    login text not null unique,
+    password text not null,
+    foreign key (role_id) references Role (role_id)
+)""")
+
 c.execute("""CREATE TABLE Room (
     room_id integer primary key autoincrement,
     number text not null,
@@ -24,16 +37,20 @@ c.execute("""CREATE TABLE Booking (
     room_id integer not null,
     check_in_date text not null,
     check_out_date text not null,
-    total_price REAL not null,
+    total_price real not null,
+    status text not null,
     foreign key (client_id) references Client (client_id),
     foreign key (room_id) references Room (room_id)
 )""")
-
+c.execute("INSERT INTO Role (role_name) VALUES ('Администратор')")
+c.execute("INSERT INTO Role (role_name) VALUES ('Пользователь')")
+c.execute("INSERT INTO User (role_id, login, password) VALUES (1, 'admin', 'admin124')")
+c.execute("INSERT INTO User (role_id, login, password) VALUES (2, 'user', 'user256')")
 c.execute("INSERT INTO Room (number, type, price_per_day, status) VALUES ('101', 'Одноместный', 2500.0, 'Свободен')")
 c.execute("INSERT INTO Room (number, type, price_per_day, status) VALUES ('102', 'Двухместный', 4000.0, 'Занят')")
 c.execute("INSERT INTO Client (first_name, last_name, phone) VALUES ('Иван', 'Иванов', '+79524732988')")
 c.execute("INSERT INTO Client (first_name, last_name, phone) VALUES ('Пётр', 'Петров', '+78005553535')")
-c.execute("INSERT INTO Booking (client_id, room_id, check_in_date, check_out_date, total_price) VALUES (1, 2, '2026-11-01', '2026-11-05', 16000.0)")
+c.execute("INSERT INTO Booking (client_id, room_id, check_in_date, check_out_date, total_price,status) VALUES (1, 2, '2026-11-01', '2026-11-05', 16000.0, 'занято')")
 
 db.commit()
 db.close()

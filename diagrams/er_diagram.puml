@@ -1,30 +1,53 @@
 @startuml
+hide circle
+skinparam linetype ortho
 
-entity "Номер" as номер {
+' Таблицы
+entity "Role (Роль)" as role {
+  * role_id : INTEGER «PK»
+  --
+  role_name : TEXT «NOT NULL»
+}
+
+entity "User (Пользователь)" as user {
+  * user_id : INTEGER «PK»
+  --
+  role_id : INTEGER «FK»
+  login : TEXT «NOT NULL»
+  password_hash : TEXT «NOT NULL»
+}
+
+entity "Room (Номер)" as room {
   * room_id : INTEGER «PK»
+  --
   number : TEXT «NOT NULL»
   type : TEXT «NOT NULL»
   price_per_day : REAL «NOT NULL»
   status : TEXT «NOT NULL»
 }
 
-entity "Клиент" as клиент {
-  * client_id : INTEGER «PK»
+entity "Guest (Клиент)" as guest {
+  * guest_id : INTEGER «PK»
+  --
   first_name : TEXT «NOT NULL»
   last_name : TEXT «NOT NULL»
   phone : TEXT «NOT NULL»
 }
 
-entity "Бронирование" as бронирование {
+entity "Booking (Бронирование)" as booking {
   * booking_id : INTEGER «PK»
-  * client_id : INTEGER «FK»
-  * room_id : INTEGER «FK»
+  --
+  guest_id : INTEGER «FK»
+  room_id : INTEGER «FK»
   check_in_date : TEXT «NOT NULL»
   check_out_date : TEXT «NOT NULL»
   total_price : REAL «NOT NULL»
+  status : TEXT «NOT NULL»
 }
 
-клиент ||--o{ бронирование
-номер ||--o{ бронирование 
+' Связи
+role ||--o{ user
+guest ||--o{ booking
+room ||--o{ booking
 
 @enduml
