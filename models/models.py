@@ -26,7 +26,6 @@ class User:
     role_id: int
     login: str
     password_hash: str
-    # Служебное/вычисляемое поле (если потребуется выводить название роли текстом)
     role_name: str | None = None
 
 @dataclass
@@ -38,6 +37,5 @@ class Booking:
     check_out_date: str
     total_price: float
     status: str
-    # Вычисляемые поля для удобства отображения в интерфейсе
     guest_full_name: str | None = None
     room_number: str | None = None

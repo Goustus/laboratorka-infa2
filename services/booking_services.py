@@ -27,7 +27,7 @@ def create_booking(guest_id: int, room_id: int, check_in: str, check_out: str):
     #стоимость
     days=(check_out - check_in).days
     total_price=days*room.price_per_day
-    booking_repository.create(guest_id=guest_id,room_id=room_id,check_in_date=check_in,check_out_date=check_out,total_price=total_price,status="Забронировано")
+    booking_repository.create(guest_id=guest_id,room_id=room_id,check_in_date=check_in.strftime("%Y-%m-%d"),check_out_date=check_out.strftime("%Y-%m-%d"),total_price=total_price,status="Забронировано")
     room_repository.update(room_id=room_id, status="Занято", price_per_day=room.price_per_day)
 
 def get_all_bookings()->list[Booking]:
