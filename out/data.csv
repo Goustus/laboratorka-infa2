@@ -1,0 +1,3 @@
+guest_id,first_name,last_name,phone,booking_id,room_id,check_in_date,check_out_date,total_price,status
+1,Иван,Иванов,+79524732988,1,2,2026-11-01,2026-11-05,16000.0,Забронировано
+2,Пётр,Петров,+78005553535,,,,,,

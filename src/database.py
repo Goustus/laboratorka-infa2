@@ -1,9 +1,7 @@
 import sqlite3
 
 def get_connection():
-    # Подключаемся к базе данных
     conn = sqlite3.connect('hotel.db')
-    # Включаем поддержку внешних ключей (важно для связей между таблицами)
     conn.execute("PRAGMA foreign_keys = ON;")
     return conn
 
@@ -12,8 +10,8 @@ def init_db():
     c = db.cursor()
     c.execute("PRAGMA foreign_keys = ON;")
     c.execute("DROP TABLE IF EXISTS Booking")
-    c.execute("DROP TABLE IF EXISTS Client") # Удаляем старую таблицу
-    c.execute("DROP TABLE IF EXISTS Guest")  # Удаляем новую (если была)
+    c.execute("DROP TABLE IF EXISTS Client")
+    c.execute("DROP TABLE IF EXISTS Guest") 
     c.execute("DROP TABLE IF EXISTS Room")
     c.execute("DROP TABLE IF EXISTS User")
     c.execute("DROP TABLE IF EXISTS Role")

@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Guests><Guest><guest_id>1</guest_id><first_name>Иван</first_name><last_name>Иванов</last_name><phone>+79524732988</phone><Booking><booking_id>1</booking_id><room_id>2</room_id><check_in_date>2026-11-01</check_in_date><check_out_date>2026-11-05</check_out_date><total_price>16000.0</total_price><status>Забронировано</status></Booking></Guest><Guest><guest_id>2</guest_id><first_name>Пётр</first_name><last_name>Петров</last_name><phone>+78005553535</phone></Guest></Guests>

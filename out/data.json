@@ -1,0 +1,23 @@
+[
+    {
+        "guest_id": 1,
+        "first_name": "Иван",
+        "last_name": "Иванов",
+        "phone": "+79524732988",
+        "booking": {
+            "booking_id": 1,
+            "room_id": 2,
+            "check_in_date": "2026-11-01",
+            "check_out_date": "2026-11-05",
+            "total_price": 16000.0,
+            "status": "Забронировано"
+        }
+    },
+    {
+        "guest_id": 2,
+        "first_name": "Пётр",
+        "last_name": "Петров",
+        "phone": "+78005553535",
+        "booking": null
+    }
+]
